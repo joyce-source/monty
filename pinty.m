@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "main.h"
 
 #define STACK_SIZE 1024
 
@@ -17,11 +16,12 @@ void push(int value, int line_number) {
     stack[sp] = value;
 }
 
-void pall() {
-    int i;
-    for (i = sp; i >= 0; i--) {
-        printf("%d\n", stack[i]);
+void pint(int line_number) {
+    if (sp == -1) {
+        fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+        exit(EXIT_FAILURE);
     }
+    printf("%d\n", stack[sp]);
 }
 
 int main(int argc, char *argv[]) {
@@ -43,9 +43,9 @@ int main(int argc, char *argv[]) {
             }
             int value = atoi(arg);
             push(value, line_number);
-        } else if (strncmp(opcode, "pall", 4) == 0) {
-            // pall opcode
-            pall();
+        } else if (strncmp(opcode, "pint", 4) == 0) {
+            // pint opcode
+            pint(line_number);
         } else {
             fprintf(stderr, "L%d: unknown opcode %s\n", line_number, opcode);
             exit(EXIT_FAILURE);
@@ -53,4 +53,3 @@ int main(int argc, char *argv[]) {
     }
     exit(EXIT_SUCCESS);
 }
-
