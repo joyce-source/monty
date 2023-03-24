@@ -28,7 +28,14 @@ typedef struct instruction_s
 {
         char *opcode;
         void (*f)(stack_t **stack, unsigned int line_number);
-} instruction_t;
+}
+instruction_t;
+typedef struct stack_s
+{
+    int data;
+    struct stack_s *next;
+}
+stack_t;
 int main(int argc, char *argv[]);
 void push(int value, int line_number);
 int stack[STACK_SIZE];
@@ -36,5 +43,5 @@ void pall();
 void push(int value, int line_number);
 void push(int line_number);
 int main(int argc, char *argv[]);
-
+void pint(stack_t **stack, unsigned int line_number);
 #endif
