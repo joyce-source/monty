@@ -33,5 +33,8 @@ int main(int argc, char *argv[]);
 void push(int value, int line_number);
 int stack[STACK_SIZE];
 void pall();
+void push(int value, int line_number);
+void push(int line_number);
+int main(int argc, char *argv[]);
 
 #endif
