@@ -1,0 +1,64 @@
+#include "monty.h"
+#include "global.h"
+
+mat_t mat;
+
+void main(int argc , int argv[])
+{
+	ssize_t file_read;
+	size_t input_size = 0;
+	char *opcode;
+	stack_t *struct = NULL;
+	instruction_t opcodes[] = {
+		{"push", _push},
+		{"pall", _pall},
+		{"pint", _pint},
+		{NULL, NULL}
+	};
+	int j;
+
+	/*we are checking to see if arg is 2*/
+	if (argc != 2)
+	{
+		fprintf(stderr, "USAGE: monty file\n");
+		exit(EXIT_FAILURE);
+	}
+
+	mat.file = fopen (argv[1], "r");
+	if (mat.file == NULL)
+	{
+		fprintf(stderr, "Error: Can't open file\n");
+		exit(EXIT_FAILURE);
+	}
+
+	file_read = getline(&mat.line, &input_size, mat.file);
+	while (file_read != -1)
+	if (*mat.line == '\n')
+		continue;
+	/*split the line into opcode and argument*/
+	opcode = strtok(mat.line, " \t\n");
+	mat.arg = strtok(NULL, " \t\n");
+
+	/*Ignore blank*/
+	if(opcode == NULL)
+		continue;
+	int j;
+	{
+	for (j = 0;opcodes[j].opcode != NULL; j++)
+	{
+		if (strcmp(opcode, opcodes[j].opcode) == 0)
+		{
+			opcodes[j].f(&stack, line_number);
+			break;
+		}
+	}
+	if (opcodes[j].opcode == NULL)
+	{
+		fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
+		exit(EXIT_FAILURE);
+	}
+	}
+	fclose(mat.file);
+	free(mat.line);
+	exit(EXIT_SUCCESS);
+}
