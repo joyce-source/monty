@@ -71,6 +71,7 @@ int main(int argc, char *argv[])
 		}
 	}
 
+	free_stack(head);
 	free(mat.line_input);
 	fclose(mat.file);
 	exit(EXIT_SUCCESS);

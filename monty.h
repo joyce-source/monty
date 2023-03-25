@@ -42,4 +42,6 @@ void _pall(stack_t **head, unsigned int line_number);
 void _push(stack_t **head, unsigned int line_number);
 void _pint(stack_t **head, unsigned int line_number);
 
+void free_stack(stack_t *head);
+
 #endif
