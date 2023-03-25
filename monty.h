@@ -38,6 +38,8 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 }instruction_t;
 
+void execute_opcode(char *opcode, stack_t **head, unsigned int line_number);
+
 void _pall(stack_t **head, unsigned int line_number);
 void _push(stack_t **head, unsigned int line_number);
 void _pint(stack_t **head, unsigned int line_number);
