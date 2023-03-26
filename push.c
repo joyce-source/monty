@@ -2,14 +2,14 @@
 #include "global.h"
 
 /**
- * _push - add node to the stack
- * @head: pointer to stack head
+ * _push - add node to the head
+ * @head: pointer to head head
  * @line_number: the line number  in the monty file
  * Return: no return
 */
 void _push(stack_t **head, unsigned int line_number)
 {
-	int number;
+	int new_n;
 	stack_t *new_node;
 	/*printf("arg2: %s\n", mat.arg);*/
 	/* we are checking if the agr is given */
@@ -20,24 +20,24 @@ void _push(stack_t **head, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	/*we are converting agr to digits */
-	number = atoi(mat.arg);
-	/*printf("arg3: %d\n", number);*/
-
+	new_n = atoi(mat.arg);
+	/* Allocate memory for new node */
 	new_node = malloc(sizeof(stack_t));
-
 	/*check if we cant allocate memory*/
 	if (new_node == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-	/*we are addeing the new number to the stack*/
-	new_node->n = number;
-	new_node->next = *head;
+	/* Set data for new node */
+	/* Set prev pointer for new node */
+	/* Set next pointer for new node to the current top node */
+	new_node->n = new_n;
 	new_node->prev = NULL;
-
-	if (*head)
+	new_node->next = *head;
+	/* update prev pointer of the current first node */
+	if (*head != NULL)
 		(*head)->prev = new_node;
-
+	/* update head pointer to point to new node */
 	*head = new_node;
 }
