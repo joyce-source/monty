@@ -18,6 +18,9 @@ void execute_opcode(char *opcode, stack_t **head, unsigned int line_number)
 		{"add", _add},
 		{"nop", _nop},
 		{"sub",_sub},
+		{"div",_div},
+		{"mul",_mul},
+		{"mod",_mod},
 		{NULL, NULL}
 	};
 	int i;
