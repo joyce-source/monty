@@ -34,7 +34,7 @@ void execute_opcode(char *opcode, stack_t **head, unsigned int line_number)
 	/* Check if the file contains an invalid instruction */
 	if (opcodes[i].opcode == NULL)
 	{
-		fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
+		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
 		exit(EXIT_FAILURE);
 	}
 }
