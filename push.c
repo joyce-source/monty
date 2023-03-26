@@ -14,9 +14,9 @@ void _push(stack_t **head, unsigned int line_number)
 	/*printf("arg2: %s\n", mat.arg);*/
 	/* we are checking if the agr is given */
 	/* if the arg is not a digit*/
-	if (mat.arg == NULL || !isdigit(*mat.arg))
+	if (mat.arg == NULL || !is_number(mat.arg))
 	{
-		fprintf(stderr, "L%d: usage push integer\n", line_number);
+		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	/*we are converting agr to digits */
@@ -40,4 +40,29 @@ void _push(stack_t **head, unsigned int line_number)
 		(*head)->prev = new_node;
 	/* update head pointer to point to new node */
 	*head = new_node;
+}
+
+/**
+ * is_number - checks if a string is a number
+ * @str: string to check
+ *
+ * Return: 1 if string is a number, 0 otherwise
+ */
+int is_number(char *str)
+{
+	if (str == NULL || *str == '\0')
+		return (0);
+
+	if (*str == '-' || *str == '+')
+		str++;
+
+	while (*str != '\0')
+	{
+		if (*str < '0' || *str > '9')
+			return (0);
+
+		str++;
+	}
+
+	return (1);
 }
