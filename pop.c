@@ -13,5 +13,6 @@ void _pop(stack_t **head, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	(*head)--;
+	free_stack(*head);
 }
 
