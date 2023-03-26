@@ -16,7 +16,7 @@ void _push(stack_t **head, unsigned int line_number)
 	/* if the arg is not a digit*/
 	if (mat.arg == NULL || !isdigit(*mat.arg))
 	{
-		fprintf(stderr, "L%u: usage push interger\n", line_number);
+		fprintf(stderr, "L%d: usage push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	/*we are converting agr to digits */

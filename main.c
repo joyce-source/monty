@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
 	mat.file = fopen(argv[1], "r");
 	if (mat.file == NULL)
 	{
-		fprintf(stderr, "Error: Can't open file\n");
+		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
 	while ((file_read = getline(&mat.line_input, &input_size, mat.file)) != -1)
