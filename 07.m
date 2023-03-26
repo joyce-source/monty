@@ -1,10 +1,4 @@
-push 1
-push 2
-push 3
-pall
-pop
-pall
-pop
-pall
-pop
+push 98
+push 402
+add Holberton
 pall

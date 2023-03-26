@@ -8,19 +8,13 @@
 
 void _add(stack_t **head, unsigned int line_number)
 {
-	int sum;
-
-	stack_t *temp;
-
 	if (*head == NULL || (*head)->next == NULL)
 	{
 		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	sum = (*head)->n + (*head)->next->n;
-	(*head)->next->n = sum;
-	temp = (*head)->next;
-	(*head)->next = (*head)->next->next;
-	free(temp);
+	(*head)->next->n += (*head)->n;
+	_pop(head, line_number);
+
 }
 
