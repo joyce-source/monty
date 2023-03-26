@@ -15,13 +15,14 @@ void _pop(stack_t **head, unsigned int line_number)
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	/* Get a reference to the current first node*/
-	temp = *head;
-	/* Update head pointer to point to the next node*/
-	*head = temp->next;
-	/* Update prev pointer of the new first node to NULL*/
-	if (*head != NULL)
-		(*head)->prev = NULL;
-	/*free memory for the old first node*/
+	/*Set temp to point to the next node in the stack */
+	temp = (*head)->next;
+	/*Free the memory allocated for the current top node of the stack*/
 	free(*head);
+	/*Update the head pointer to point to the new top node.*/
+	*head = temp;
+	/*Update the prev pointer of the new top node to NULL*/
+	/*to indicate that it is now the top of the stack.*/
+ if (*head != NULL)
+		(*head)->prev = NULL;
 }
