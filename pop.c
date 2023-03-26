@@ -12,7 +12,7 @@ void _pop(stack_t **head, unsigned int line_number)
 	/* check if list is empty */
 	if (*head == NULL)
 	{
-		printf("L%d: can't pop an empty stack\n", line_number);
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	/* Get a reference to the current first node*/
@@ -20,8 +20,8 @@ void _pop(stack_t **head, unsigned int line_number)
 	/* Update head pointer to point to the next node*/
 	*head = temp->next;
 	/* Update prev pointer of the new first node to NULL*/
-		if (*head != NULL)
-			(*head)->prev = NULL;
+	if (*head != NULL)
+		(*head)->prev = NULL;
 	/*free memory for the old first node*/
 	free(*head);
 }
